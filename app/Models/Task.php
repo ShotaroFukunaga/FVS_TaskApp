@@ -17,4 +17,9 @@ class Task extends Model
         'content',
         'deadline'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
