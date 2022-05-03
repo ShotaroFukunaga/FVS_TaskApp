@@ -6,6 +6,22 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+## 環境
+- PHP 8.1.5
+- Laravel Framework 9.10.1
+- npm 8.8.0
+- mysql
+- macOS Monterey 12.3.1
+- docker 20.10.13
+
+## 開発環境
+- Visual Studio Code
+- Vim
+
+
+
+
+
 
 ## About Laravel
 
