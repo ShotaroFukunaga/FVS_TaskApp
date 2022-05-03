@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -15,6 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
     // // メールアドレスをオートインクリメントしない設定
     // protected $primaryKey = 'email';
     // public $incrementing = false;
+
 
     /**
      * The attributes that are mass assignable.
