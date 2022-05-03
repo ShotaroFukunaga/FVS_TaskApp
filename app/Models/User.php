@@ -14,8 +14,8 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasApiTokens, HasFactory, Notifiable;
 
     // // メールアドレスをオートインクリメントしない設定
-    // protected $primaryKey = 'email';
-    // public $incrementing = false;
+    protected $primaryKey = 'email';
+    public $incrementing = false;
 
 
     /**

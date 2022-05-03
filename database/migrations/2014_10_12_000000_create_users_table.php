@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->nullable();
+            
             $table->string('name');
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
@@ -22,8 +22,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->primary(['id','email']);
-
+            $table->primary(['email']);
         });
 
 
