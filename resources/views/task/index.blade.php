@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Tasks')
 
 @section('content_header')
     <h1>Tasks</h1>
@@ -8,6 +8,7 @@
 
 @auth
 @section('content')
+<a class="btn btn-primary mb-2" href="{{ route('task.create') }}" role="button">タスク追加</a>
   <div class="table-responsive">
     <table class="table" style="width: 1300px; max-width: 0 auto;">
       <tr class="table-info">
@@ -24,7 +25,7 @@
       @endforeach
     </table>
 
-    @if($tasks !== null)
+    @if(!$tasks)
       <div class="d-flex justify-content-center">
         <h3>タスクがありません</h3>
       </div>
@@ -35,15 +36,15 @@
 @endauth
 
 @section('footer')
-<div class="d-flex justify-content-center">
-      {{ $tasks->appends(request()->input())->links() }}
-    </div>  
+  <div class="d-flex justify-content-center">
+    {{ $tasks->appends(request()->input())->links() }}
+  </div> 
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+  <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+  <script> console.log('Hi!'); </script>
 @stop
