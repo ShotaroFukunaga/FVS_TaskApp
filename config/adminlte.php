@@ -313,8 +313,9 @@ return [
             'text'       => 'クリア',
             'icon_color' => 'yellow',
             'route'      => 'task.index',
-            'value'    => '1',
+            'value'    => '2',
             'active'    => ['task/*'],
+            'type'  => 'submit'
         ],
         [
             'text'       => '完了済みタスク',

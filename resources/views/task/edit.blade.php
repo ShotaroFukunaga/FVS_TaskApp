@@ -2,6 +2,10 @@
 
 @section('title','タスク編集')
 
+@section('content_header')
+  <h1>{{ $user }}のタスク</h1>
+@stop
+
 @section('content')
 
 <x-task-validation-errors class="mb-4" :errors="$errors" />
@@ -18,10 +22,11 @@
         {{ Form::textarea('content',null,['class'=>'form-control','placeholder'=>'コンテンツ']) }}
       </div>
       <div class="form-group">
-        {{ Form::label('status','未対応')}}
+        {{ Form::label('content','ステータス：')}}
         {{ Form::radio('status', '1') }}
-        {{ Form::label('status','対応済み')}}
+        {{ Form::label('status','未対応')}}
         {{ Form::radio('status', '2') }}
+        {{ Form::label('status','対応済み')}}
       </div>
       <div class="form-group">
         {{Form::label('date','期限',['class' => 'col-md-2 col-form-label text-left'])}}

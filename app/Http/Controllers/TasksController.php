@@ -40,7 +40,7 @@ class TasksController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTaskRequest  $request
+     * @param  \App\Http\Requests\TaskRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(TaskRequest $request)
@@ -62,21 +62,22 @@ class TasksController extends Controller
         if(!$taskService->checkOwnTask($taskId)){
             throw new AccessDeniedHttpException();
         }
-        // $task = Task::find($taskId)->firstOrFail();
-
+        $task = Task::find($taskId);
+        $user = $task->user->name;
         return view('task.edit',[
-            'task' => Task::find($taskId)
+            'task' => $task,
+            'user' => $user
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTaskRequest  $request
+     * @param  \App\Http\Requests\TaskRequest  $request
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$taskId,TaskService $taskService)
+    public function update(TaskRequest $request,$taskId,TaskService $taskService)
     {
         if(!$taskService->checkOwnTask($taskId)){
             throw new AccessDeniedHttpException();

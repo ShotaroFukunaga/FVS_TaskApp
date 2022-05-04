@@ -21,19 +21,22 @@
 @endif
 
 <form class="row g-4" method="GET" action="{{ route('task.index') }}">
+  @csrf
   <div class="col-auto">
     <input class="form-control mt-1" type="text" placeholder="検索" name="search" value="@if (isset($search)) {{ $search }} @endif">
   </div>
   <div class="col-auto">
-  <button class="btn btn-dark m-1 btn-sm" type="submit">検索</button>
+    <button class="btn btn-dark m-1 btn-sm" type="submit">検索</button>
   </div>
 </form>
-<form class="block mb-2 mt-4" method="GET" action="{{ route('task.index') }}">
-<button class="btn btn-success m-1 btn-sm" type="submit" name="cmp" value="1">完了済みタスク</button>
-<button class="btn btn-danger m-1 btn-sm" type="submit" name="due" value="due">期限超過</button>
-<button class="btn btn-secondary m-1 btn-sm" type="submit">クリア</button>
 
-<a class="btn btn-info ml-5 btn-sm" href="{{ route('task.create') }}" role="button">タスク追加</a>
+<form class="block mb-2 mt-4" method="GET" action="{{ route('task.index') }}">
+  @csrf
+  <button class="btn btn-success m-1 btn-sm" type="submit" name="cmp" value="1">完了済みタスク</button>
+  <button class="btn btn-danger m-1 btn-sm" type="submit" name="due" value="due">期限超過</button>
+  <button class="btn btn-secondary m-1 btn-sm" type="submit">クリア</button>
+
+  <a class="btn btn-info ml-5 btn-sm" href="{{ route('task.create') }}" role="button">タスク追加</a>
 </form>
 
 
