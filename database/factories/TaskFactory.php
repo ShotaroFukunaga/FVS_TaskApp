@@ -22,6 +22,7 @@ class TaskFactory extends Factory
             'title' => $this->faker->realtext(10),
             'content' => $this->faker->realText(100),
             'status' => '1',
+            'deadline' => $this->faker->dateTime(),
         ];
     }
 }

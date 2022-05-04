@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TasksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth','verified'])->name('dashboard');
 
-Route::resource('/task',TaskController::class)->only('index')->middleware(['auth']);
+Route::resource('/task',TasksController::class)->only('index')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
