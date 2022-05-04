@@ -21,6 +21,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth','verified'])->name('dashboard');
 
-Route::resource('/task',TasksController::class)->middleware(['auth']);
+Route::resource('/task',TasksController::class)->except('show')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
