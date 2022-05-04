@@ -50,27 +50,23 @@ class TasksController extends Controller
         $task->fill($request->all())->save();
         return redirect()->route('task.index')->with('message','登録しました');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Task $task)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit($taskId,TaskService $taskService)
     {
-        //
+        
+        if(!$taskService->checkOwnTask($taskId)){
+            throw new AccessDeniedHttpException();
+        }
+        // $task = Task::find($taskId);
+
+        return view('task.edit',[
+            'task' => Task::find($taskId)
+        ]);
     }
 
     /**
@@ -91,8 +87,13 @@ class TasksController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($taskId,TaskService $taskService)
     {
-        //
+        if(!$taskService->checkOwnTask($taskId)){
+            throw new AccessDeniedHttpException();
+        }
+        task::where('id',$taskId)->delete();
+
+        return redirect()->route('task.index')->with('message','削除しました');
     }
 }

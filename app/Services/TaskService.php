@@ -59,13 +59,14 @@ class TaskService
   }
 
 
-  public function checkOwnTask(int $userId, int $taskId): bool
+  public function checkOwnTask(int $taskId): bool
   {
+    $user_id = Auth::id();
     $task = Task::where('id',$taskId)->first();
     if(!$task){
       return false;
     }
-    return $task->user_id === $userId;
+    return $task->user_email === $user_id;
   }
 
 }
