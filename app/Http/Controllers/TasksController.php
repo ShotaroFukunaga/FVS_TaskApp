@@ -48,7 +48,7 @@ class TasksController extends Controller
         $task = new Task;
         $task->user_email = Auth::id();
         $task->fill($request->all())->save();
-        return redirect()->route('task.index')->with('message','登録しました');
+        return redirect()->route('task.index')->with('message','タスクを作成しました');
     }
     /**
      * Show the form for editing the specified resource.
@@ -62,7 +62,7 @@ class TasksController extends Controller
         if(!$taskService->checkOwnTask($taskId)){
             throw new AccessDeniedHttpException();
         }
-        // $task = Task::find($taskId);
+        // $task = Task::find($taskId)->firstOrFail();
 
         return view('task.edit',[
             'task' => Task::find($taskId)
@@ -76,9 +76,15 @@ class TasksController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(TaskRequest $request, Task $task)
+    public function update(Request $request,$taskId,TaskService $taskService)
     {
-        //
+        if(!$taskService->checkOwnTask($taskId)){
+            throw new AccessDeniedHttpException();
+        }
+        $task = Task::where('id', $taskId)->firstOrFail();
+        $task->fill($request->all())->save();
+
+        return redirect()->route('task.index')->with('message','タスクを編集しました');
     }
 
     /**
@@ -94,6 +100,6 @@ class TasksController extends Controller
         }
         task::where('id',$taskId)->delete();
 
-        return redirect()->route('task.index')->with('message','削除しました');
+        return redirect()->route('task.index')->with('message','タスクを削除しました');
     }
 }
