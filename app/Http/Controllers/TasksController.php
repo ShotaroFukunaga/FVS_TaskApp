@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Http\Requests\TaskRequest;
+use App\Services\TaskService;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-class TaskController extends Controller
+class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,TaskService $taskService)
     {
-        return view('task.index');
+        
+        $tasks = $taskService->getTasks($request);
+        
+        return view('task.index')
+            ->with([
+                'tasks' => $tasks,
+            ]);
     }
 
     /**
@@ -34,7 +43,7 @@ class TaskController extends Controller
      * @param  \App\Http\Requests\StoreTaskRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTaskRequest $request)
+    public function store(TaskRequest $request)
     {
         //
     }
@@ -68,7 +77,7 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
         //
     }
