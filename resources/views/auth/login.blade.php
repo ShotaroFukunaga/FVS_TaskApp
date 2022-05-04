@@ -52,5 +52,8 @@
                 </x-button>
             </div>
         </form>
+        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('新規登録はこちら') }}
+                </a>
     </x-auth-card>
 </x-guest-layout>
