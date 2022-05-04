@@ -13,6 +13,11 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\CustomVerifyEmail());
+    }
+
     // // メールアドレスをオートインクリメントしない設定
     protected $primaryKey = 'email';
     protected $keyType = 'string';
