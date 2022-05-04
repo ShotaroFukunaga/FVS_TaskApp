@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth','verified'])->name('dashboard');
-
-Route::resource('/task',TasksController::class)->except('show')->middleware(['auth']);
+Route::middleware(['auth','verified'])->resource('/task',TasksController::class)->except('show');
 
 require __DIR__.'/auth.php';
