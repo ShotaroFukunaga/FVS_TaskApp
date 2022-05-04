@@ -8,6 +8,7 @@
 
 @auth
 @section('content')
+<a class="btn btn-primary mb-2" href="{{ route('task.create') }}" role="button">タスク追加</a>
   <div class="table-responsive">
     <table class="table" style="width: 1300px; max-width: 0 auto;">
       <tr class="table-info">

@@ -34,7 +34,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -45,7 +45,10 @@ class TasksController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        //
+        $task = new Task;
+        $task->user_email = Auth::id();
+        $task->fill($request->all())->save();
+        return redirect()->route('task.index')->with('message','登録しました');
     }
 
     /**
