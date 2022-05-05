@@ -6,74 +6,79 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-## 環境
+
+# FVSコーディングテスト
+## 開発環境
 - PHP 8.1.5
 - Laravel Framework 9.10.1
-- npm 8.8.0
-- mysql
+- mysql 8.0
 - macOS Monterey 12.3.1
 - docker 20.10.13
-
-## 開発環境
+### 使用した開発ツール
 - Visual Studio Code
 - Vim
+  
+### バージョン管理
+- Git Hub
+
+## 本番環境
+- AWS EC2
+- SES
+- Nginx 1.20.0 
+- MySQL 8.0
+- Laravel 9.11.0
+- PHP 8.0.16
 
 
 
+</br>
+
+
+# アプリ名 ： FVS_TaskApp
+## 概要
+要件に沿って作成したタスク管理アプリです。
+
+## 基本機能
+- ユーザー登録機能
+- ユーザー認証機能
+- パスワードリセット機能
+- タスク管理機能
+- タスク検索機能
+
+## 使用方法
+1. まずは会員登録画面にて会員情報を入力してください、情報を登録するとアプリからURLが記載されたメールが送られて来るので記載されたURLにアクセスし本登録を完了してください。
+   
+2. やらなくてはいけない仕事が出来たらタスク追加ボタンでタスク作成画面に遷移してタスクを作成してください。入力項目はタイトルとコンテンツ、期限選択カレンダーがあります。
+   
+3. タスク一覧に戻ったら期限超過、または完了済みタスクのボタンをクリックして表示するタスクを絞り込みして現在のタスクを確認して下さい。
+   
+4. 探したいタスクのタイトルがあれば検索フォームにてキーワードを入力して下さい、うろ覚えでも大丈夫です。近いワードのタイトルが表示されます。
+   
+5. タスクが完了したらタスク詳細をクリックして対応済みにチェックを入れましょう、またこのページではタスクの編集、削除、期限の変更も行えます。
+   
+6. 以上です。ありがとうございました！
+
+</br>
+
+## 制作手順
+1. Laravel + Docker | Laravel Sailにて環境構築
+2. 各種パッケージをインストール
+3. Breezeにてユーザー登録、認証機能を構築
+4. タスク機能に伴うMVC CRUDの作成
+5. デザインはLaravel-adminLTEを採用
+6. メール機能の各種機能の変更
+7. アプリ全体の調整
+8. AWS EC2の登録、本番環境の構築
+9. アプリのデプロイ
+10. SESにてメールサーバーを構築、申請承諾待ち ←イマココ
 
 
 
-## About Laravel
+</br>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+</br>
 
 ## License
 

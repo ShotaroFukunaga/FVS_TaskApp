@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\task;
+use App\Models\Task;
 use App\Http\Requests\TaskRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
