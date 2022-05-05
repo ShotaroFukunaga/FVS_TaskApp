@@ -238,15 +238,15 @@ return [
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-            'route' => 'task.index',
+            // 'type' => 'sidebar-menu-search',
+            // 'text' => 'search',
+            // 'route' => 'task.index',
         ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         // [
         //     'text'        => 'pages',
         //     'url'         => 'admin/pages',
@@ -255,11 +255,11 @@ return [
         //     'label_color' => 'success',
         // ],
         // ['header' => 'account_settings'],
-        // [
-        //     'text' => 'profile',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-user',
-        // ],
+        [
+            'text' => '検索条件をクリアする',
+            'route'      => 'task.index',
+            'icon' => 'fas fa-fw fa-share',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',
@@ -303,25 +303,25 @@ return [
         //         ],
         //     ],
         // ],
-        ['header' => '絞り込む'],
-        [
-            'text'       => '期限超過',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'クリア',
-            'icon_color' => 'yellow',
-            'route'      => 'task.index',
-            'value'    => '2',
-            'active'    => ['task/*'],
-            'type'  => 'submit'
-        ],
-        [
-            'text'       => '完了済みタスク',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        // ['header' => '絞り込む'],
+        // [
+        //     'text'       => '期限超過',
+        //     'icon_color' => 'red',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'クリア',
+        //     'icon_color' => 'yellow',
+        //     'route'      => 'task.index',
+        //     'value'    => '2',
+        //     'active'    => ['task/*'],
+        //     'type'  => 'submit'
+        // ],
+        // [
+        //     'text'       => '完了済みタスク',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*
