@@ -38,36 +38,39 @@
   <a class="btn btn-info mr-5 btn-sm" href="{{ route('task.create') }}" role="button">タスク追加</a>
 </form>
 
-  <div class="table table-striped table-hover">
-    <table class="table-responsive table-bordered" style="width: auto; max-width: 0 auto;">
+  
+    <table class="table table-bordered table-hover">
+    <thead>
       <tr class="table-info">
-        <th scope="col" width="20%">ユーザーID</th>
-        <th scope="col" width="20%">タスク</th>
-        <th scope="col" width="20%">期日</th>
-        <th scope="col" width="30%">内容</th>
-        <th scope="col" width="10"></th>
+        <th>タイトル</th>
+        <th>内容</th>
+        <th>期日</th>
+        <th></th>
       </tr>
+    </thead>
+    <tbody>
       @foreach($tasks as $task)
       <tr>
-        <th scope="row">{{$task->user_email}}</th>
-        <th scope="row">{{$task->title}}</th>
-        <th scope="row">{{$task->deadline?->format('Y/m/d') ?? ''}}</th>
-        <th scope="row">{{$task->content}}</th>
-        <th>
-        <button class="btn btn-success m-1 btn-sm" href="{{ route('task.edit', $task->id) }}">詳細</button>
-        </th>
+        <td>
+        <p>{{$task->title}}</p>
+        <p>{{$task->user_email}}</p>
+        </td>
+        <td>{{$task->deadline?->format('Y/m/d') ?? ''}}</td>
+        <td>{{$task->content}}</td>
+        <td>
+        <button class="btn btn-success btn-sm" href="{{ route('task.edit', $task->id) }}">詳細</button>
+        </td>
       </tr>
       @endforeach
+      </tbody>
     </table>
-  </div>
 @stop
 @endauth
 
-
 @section('footer')
-<div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center">
     {{ $tasks->appends(request()->input())->links() }}
-  </div> 
+  </div>
 @stop
 
 @section('css')
