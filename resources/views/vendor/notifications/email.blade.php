@@ -51,7 +51,7 @@
 @isset($actionText)
 @slot('subcopy')
 @lang(
-    "もし\":actionText\" ボタンがクリックできない場合、URLをコピーして\n".
+    "もしボタンがクリックできない場合、URLをコピーして\n".
     'ブラウザに貼り付けてください。',
     [
         'actionText' => $actionText,

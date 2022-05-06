@@ -77,7 +77,7 @@ class CustomVerifyEmail extends Notification
         $name = $notifiable->name;
         return (new MailMessage)
             ->subject(Lang::get('Verify Email Address'))
-            ->line(Lang::get("{$name}さん、登録ありがとうございます"))
+            ->line(Lang::get("ようこそ{$name}さん、ご登録ありがとうございます"))
             ->action(Lang::get('Verify Email Address'), $url)
             ->line(Lang::get('If you did not create an account, no further action is required.'));
     }

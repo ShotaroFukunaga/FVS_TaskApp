@@ -8,6 +8,7 @@
 
 @section('content')
 
+<!-- バリテージョンエラーのコンポーネント -->
 <x-task-validation-errors class="mb-4" :errors="$errors" />
 
 {{ Form::model($task,['method'=>'put', 'route'=>['task.update',$task->id]]) }}
