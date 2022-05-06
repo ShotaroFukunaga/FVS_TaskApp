@@ -43,7 +43,7 @@
     <thead>
       <tr class="table-info">
         <th>タイトル</th>
-        <th>期日・ステータス</th>
+        <th>期日</th>
         <th>タスク内容</th>
         <th></th>
       </tr>
@@ -57,7 +57,6 @@
         </td>
         <td width="%30">
           <p>{{$task->deadline?->format('Y/m/d') ?? ''}}</p>
-          <p>{{$task->status}}</p>
         </td>
         <td width="%40">{{$task->content}}</td>
         <td width="%10">
