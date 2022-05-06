@@ -14,7 +14,7 @@
   </div>
 @stop
 
-@auth
+
 @section('content')
 
 <x-task-validation-errors class="mb-4" :errors="$errors" />
@@ -35,37 +35,39 @@
   @csrf
   <button class="btn btn-success m-1 btn-sm" type="submit" name="cmp" value="1">完了済みタスク</button>
   <button class="btn btn-danger m-1 btn-sm" type="submit" name="due" value="due">期限超過</button>
-  <a class="btn btn-info mr-5 btn-sm" href="{{ route('task.create') }}" role="button">タスク追加</a>
+  <a class="btn btn-info mr-5 btn-sm" href="{{ route('task.create') }}" role="button">＋ タスク追加</a>
 </form>
 
   
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" >
     <thead>
       <tr class="table-info">
         <th>タイトル</th>
-        <th>内容</th>
         <th>期日</th>
+        <th>タスク内容</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       @foreach($tasks as $task)
       <tr>
-        <td>
-        <p>{{$task->title}}</p>
-        <p>{{$task->user_email}}</p>
+        <td width="%20">
+          <p>{{$task->title}}</p>
+          <small>ID : {{$task->user_email}}</small>
         </td>
-        <td>{{$task->deadline?->format('Y/m/d') ?? ''}}</td>
-        <td>{{$task->content}}</td>
-        <td>
-        <button class="btn btn-success btn-sm" href="{{ route('task.edit', $task->id) }}">詳細</button>
+        <td width="%30">{{$task->deadline?->format('Y/m/d') ?? ''}}</td>
+        <td width="%40">{{$task->content}}</td>
+        <td width="%10">
+          <a href="{{ route('task.edit', $task->id) }}" class="text-decoration-none">
+            タスク編集<x-task-edit-logo/>
+          </a>
         </td>
       </tr>
       @endforeach
       </tbody>
     </table>
 @stop
-@endauth
+
 
 @section('footer')
   <div class="d-flex justify-content-center">
