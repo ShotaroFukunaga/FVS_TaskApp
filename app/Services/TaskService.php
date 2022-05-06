@@ -41,7 +41,8 @@ class TaskService
   public function deadlineTask($request,$query)
   {
     if(isset($request['due'])){
-      return $query->where('deadline','<',Carbon::now());
+      $carbon = Carbon::now();
+      return $query->where('deadline','<',$carbon->subDays(1));
     }
     return null;
   }
