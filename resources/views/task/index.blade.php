@@ -4,14 +4,6 @@
 
 @section('content_header')
     <h1>Tasks</h1>
-    <form class="row g-4" method="GET" action="{{ route('task.index') }}">
-  @csrf
-  <div class="col-auto">
-    <input class="form-control mt-1" type="text" placeholder="検索" name="search" value="@if (isset($search)) {{ $search }} @endif">
-  </div>
-  <div class="col-auto">
-    <button class="btn btn-dark m-1 btn-sm" type="submit">検索</button>
-  </div>
 @stop
 
 
@@ -28,7 +20,15 @@
   </div>
 @endif
 
-
+<form class="row g-4" method="GET" action="{{ route('task.index') }}">
+  @csrf
+  <div class="col-auto">
+    <input class="form-control mt-1" type="text" placeholder="検索" name="search">
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-dark m-1 btn-sm" type="submit">検索</button>
+  </div>
+</form>
 
 
 <form class="block mb-2 mt-4" method="GET" action="{{ route('task.index') }}">
@@ -55,7 +55,9 @@
           <p>{{$task->title}}</p>
           <small>ID : {{$task->user_email}}</small>
         </td>
-        <td width="%30">{{$task->deadline?->format('Y/m/d') ?? ''}}</td>
+        <td width="%30">
+          <p>{{$task->deadline?->format('Y/m/d') ?? ''}}</p>
+        </td>
         <td width="%40">{{$task->content}}</td>
         <td width="%10">
           <a href="{{ route('task.edit', $task->id) }}" class="text-decoration-none">
