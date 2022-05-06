@@ -26,6 +26,8 @@ class TaskRequest extends FormRequest
         return [
             'title' => 'required|string|max:64',
             'content' => 'nullable|string|max:65534',
+            'status' => 'nullable',
+            'deadline' => 'nullable',
         ];
     }
 

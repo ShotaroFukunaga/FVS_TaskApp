@@ -10,42 +10,43 @@ use Illuminate\Support\Facades\Auth;
 class TaskService
 {
 
+  //条件にマッチしたタスクを取得
   public function getTasks($request)
   {
     $query = Task::query();
 
     $this->searchTask($request,$query);
     
-    $this->dueTask($request,$query);
+    $this->deadlineTask($request,$query);
     
     $this->statusTask($request,$query);
 
-    
     return $query->where('user_email', Auth::id())
                   ->orderBy('created_at','DESC')
                   ->paginate(5);
 
   }
 
+  //ステータスのタスクを取得
   public function statusTask($request,$query)
-  { 
+  {
     $status = 1;
-
-    if($request->input('cmp')){
+    if(isset($request['cmp'])){
       $status = 2;
     }
-    return $status = $query->where('status', $status);
+    return $query->where('status', $status);
   }
 
-  public function dueTask($request,$query)
+  //現時刻から期限が超過したタスクを取得
+  public function deadlineTask($request,$query)
   {
-    
-    if($request->input('due')){
-      $query->where('deadline','<',Carbon::now());
+    if(isset($request['due'])){
+      return $query->where('deadline','<',Carbon::now());
     }
-    
+    return null;
   }
 
+  //タスクをあいまい検索
   public function searchTask($request,$query)
   {
     if($search = $request->input('search')){
@@ -55,14 +56,14 @@ class TaskService
         return $query->where('title','like','%'.$value.'%');
       }
     }
+    return null;
   }
 
-  public function saveTask($task,$request){
-    $task->fill($request->all())->save();
-    return 0;
-  }
+  // public function SaveRequest(TaskRequest $request,$instance){
+  //   return $instance->fill($request->all())->save();
+  // }
 
-
+  //タスクとユーザーが一致するかチェック
   public function checkOwnTask(int $taskId): bool
   {
     $user_id = Auth::id();

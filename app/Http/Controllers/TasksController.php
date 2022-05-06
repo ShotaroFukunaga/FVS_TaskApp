@@ -58,7 +58,6 @@ class TasksController extends Controller
      */
     public function edit($taskId,TaskService $taskService)
     {
-        
         if(!$taskService->checkOwnTask($taskId)){
             throw new AccessDeniedHttpException();
         }
